@@ -34,7 +34,7 @@ st.write("")
 _, mid, _ = st.columns([1, 2, 1])
 with mid:
     if st.button("🚀 Start Translating", use_container_width=True, type="primary"):
-        st.switch_page("pages/Translator.py")
+        st.switch_page("Language Translator.py")
 
 st.write("")
 with st.expander("🌐 Preview supported languages"):
