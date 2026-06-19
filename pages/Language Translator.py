@@ -203,4 +203,4 @@ if st.session_state.translated_text:
         st.button("🗑 Clear All", use_container_width=True, on_click=clear_all)
 
 st.divider()
-st.caption("🌍 Powered by Google Translate | Built with Streamlit")
+st.caption("© 2026 Elite Language Translator • Fast • Accurate • Secure")
