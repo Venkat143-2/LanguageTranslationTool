@@ -1,15 +1,21 @@
 import streamlit as st
 from deep_translator import GoogleTranslator
-import pyperclip
+
 st.set_page_config(
     page_title="Elite Language Translator",
     page_icon="🌍",
     layout="centered"
 )
+
+# -------------------- Session State --------------------
 if "input_area" not in st.session_state:
     st.session_state.input_area = ""
+
 if "translated_text" not in st.session_state:
     st.session_state.translated_text = ""
+
+
+# -------------------- Functions --------------------
 def translate_text():
     text = st.session_state.input_area.strip()
 
@@ -28,15 +34,18 @@ def translate_text():
 
     except Exception as e:
         st.error(f"Translation failed:\n{e}")
+
+
 def clear_input():
     st.session_state.input_area = ""
+
+
 def clear_all():
     st.session_state.input_area = ""
     st.session_state.translated_text = ""
-def copy_text():
-    if st.session_state.translated_text:
-        pyperclip.copy(st.session_state.translated_text)
-        st.toast("✅ Copied to clipboard!")
+
+
+# -------------------- Languages --------------------
 languages = {
     "Spanish": "es",
     "English": "en",
@@ -99,30 +108,38 @@ languages = {
     "Maltese": "mt",
     "Welsh": "cy"
 }
+
+# -------------------- UI --------------------
 st.title("🌍 Elite Language Translator")
 st.markdown("### Translate between 60+ languages instantly")
+
 col1, col2 = st.columns(2)
+
 with col1:
     st.selectbox(
         "Source Language",
         options=list(languages.keys()),
-        index=0,
+        index=list(languages.keys()).index("English"),
         key="source_lang"
     )
+
 with col2:
     st.selectbox(
         "Target Language",
         options=list(languages.keys()),
-        index=list(languages.keys()).index("English"),
+        index=list(languages.keys()).index("Spanish"),
         key="target_lang"
     )
+
 st.text_area(
     "Enter Text",
     height=220,
     placeholder="Type or paste your text here...",
     key="input_area"
 )
+
 col1, col2 = st.columns(2)
+
 with col1:
     st.button(
         "🔥 Translate",
@@ -130,32 +147,32 @@ with col1:
         type="primary",
         on_click=translate_text
     )
+
 with col2:
     st.button(
         "🗑 Clear Input",
         use_container_width=True,
         on_click=clear_input
     )
+
+# -------------------- Output --------------------
 if st.session_state.translated_text:
-    st.success("Translated Text")
-    st.text_area(
-        "Result",
-        value=st.session_state.translated_text,
-        height=220,
-        disabled=True
+
+    st.success("✅ Translation Completed")
+
+    st.markdown("### Translated Text")
+
+    # Automatically includes a Copy button
+    st.code(
+        st.session_state.translated_text,
+        language=None
     )
-    col1, col2 = st.columns(2)
-    with col1:
-        st.button(
-            "📋 Copy",
-            use_container_width=True,
-            on_click=copy_text
-        )
-    with col2:
-        st.button(
-            "🗑 Clear All",
-            use_container_width=True,
-            on_click=clear_all
-        )
+
+    st.button(
+        "🗑 Clear All",
+        use_container_width=True,
+        on_click=clear_all
+    )
+
 st.divider()
-st.caption("🌍 Powered by Google Translate | Built with Streamlit")
+st.caption("🌍 Powered by Google Translate | Built with Streamlit ❤️")
