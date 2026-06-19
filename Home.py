@@ -1,12 +1,12 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Elite Language Translator",
+    page_title="Language Translator",
     page_icon="🌍",
     layout="centered",
 )
 
-st.title("🌍 Elite Language Translator")
+st.title("🌍 Language Translator")
 st.markdown("#### Translate text between 60+ languages, instantly and for free.")
 
 st.write("")
@@ -47,4 +47,4 @@ with st.expander("🌐 Preview supported languages"):
     st.write(", ".join(preview))
 
 st.divider()
-st.caption("🌍 Powered by Google Translate | Built with Streamlit")
+st.caption("© 2026 Elite Language Translator • Fast • Accurate • Secure")
