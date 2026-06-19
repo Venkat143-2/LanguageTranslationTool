@@ -1,11 +1,10 @@
 import json
-
 import streamlit as st
 import streamlit.components.v1 as components
 from deep_translator import GoogleTranslator
 
 st.set_page_config(
-    page_title="Translator | Elite Language Translator",
+    page_title="Language Translator",
     page_icon="🌍",
     layout="centered",
 )
