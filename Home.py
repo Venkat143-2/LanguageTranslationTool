@@ -36,7 +36,7 @@ with st.container(border=True):
 _, mid, _ = st.columns([1, 2, 1])
 with mid:
     if st.button("🚀 Start Translating", use_container_width=True, type="primary"):
-        st.switch_page("pages/Translator.py")   # Fixed path
+        st.switch_page("pages/Language Translator.py")   # Fixed path
 
 with st.expander("🌐 Preview supported languages"):
     preview = [
